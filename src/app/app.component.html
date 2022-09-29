@@ -1,0 +1,58 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rock+Salt&display=swap" rel="stylesheet">
+
+<div class="game">
+	<div class="letsplay">Let's Play</div>
+	<div class="gameName">Proftionary</div>
+</div>
+
+<div class="con-body">
+
+	<div class="background">
+		<canvas #myCanvas width="530" height="350" style="margin-top:12px; border:1px solid #BFBFBF;">
+		Your browser does not support the canvas element.
+		</canvas>
+	</div>
+
+	<button class ="deleteB" (click)="delete()">&#9746;</button>
+
+	<div id="sizes" class="sizes">
+		<div class="size25" id="s25" (click)="size(25)"></div>
+		<div class="size10" id="s10" (click)="size(10)"></div>
+		<div class="size5" id="s5" (click)="size(5)"></div>
+		<div class="size2" id="s2" (click)="size(2)"></div>
+		<div class="size1" id="s1" (click)="size(1)"></div>
+	</div>
+
+	<!--SidebarColor-->
+	<button class="colourB" (click)="showColors()">&#8678;</button>
+	<div id="colours" class="colours">
+		<div class="clPink" id="lightpink" (click)="color(16)"></div>
+		<div class="cdPink" id="darkpink" (click)="color(17)"></div>
+		<div class="cViolet" id="violet" (click)="color(1)"></div>
+		<div class="cIndigo" id="indigo" (click)="color(15)"></div>
+		<div class="cDBlue" id="darkBlue" (click)="color(2)"></div>
+		<div class="cLBlue" id="lightBlue" (click)="color(3)"></div>
+		<div class="cGreen" id="green" (click)="color(4)"></div>
+		<div class="cLime" id="lime" (click)="color(5)"></div>
+		<div class="cYellow" id="yellow" (click)="color(6)"></div>
+		<div class="cGold" id="gold" (click)="color(14)"></div>
+		<div class="cOrange" id="orange" (click)="color(7)"></div>
+		<div class="cRed" id="red" (click)="color(8)"></div>
+		<div class="cBrown" id="brown" (click)="color(9)"></div>
+		<div class="cTan" id="tan" (click)="color(13)"></div>
+		<div class="cLGrey" id="lightGrey" (click)="color(10)"></div>
+		<div class="cDGrey" id="darkGrey" (click)="color(11)"></div>
+		<div class="cBlack" id="black" (click)="color(12)"></div>
+
+		<div class="eraser" id="white" (click)="color(0)"></div>
+	</div>
+
+</div>
+<br>
+<button (click)="setRandProf()">generate Prof</button>
+<span *ngIf="randProf">
+  <p>{{randProf.name}}</p>
+  <img src="{{randProf.getImages()[0].fileUrl}}"/>
+</span>

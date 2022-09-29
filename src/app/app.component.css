@@ -1,0 +1,363 @@
+/*Initialer Seiten-Hintergrund*/
+body { background-color: #E3E3E3; /*Für bessere Sichtbarkeit der Anwendung*/
+}
+
+.con-body {
+  margin-top:0px;
+}
+
+.game {
+  margin-left:27px;
+  margin-bottom:-20px;
+}
+
+.letsplay {
+  font-family: 'Rock Salt', cursive;
+  font-size:14px;
+  margin-bottom:-15px;
+  margin-left:25px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
+  
+}
+
+.gameName {
+  font-family: 'Bebas Neue', cursive;
+  font-size:38px;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+/*Visueller Hintergrund der Anwendung*/
+.background {
+  background-image: url('https://i.imgur.com/GeNO9d9.png');
+  width: 534px;
+  height: 384px;
+  display: block;
+}
+
+/* Sidebar-Menü für die Sizeauswahl */
+.sizes {
+  height: 100px; 
+  width: 10px; 
+  background-color: none; 
+  line-height: 0px;
+  display: block;
+  margin-top:-325px;
+  margin-left:500px;
+  margin-bottom:5px;
+}
+
+/* Sidebar-Menü für die Farbauswahl */
+.colours {
+  height: 10px; 
+  width: 600px; 
+  background-color: none; 
+  transition: all 0.5s ease-in-out;
+  display: block;
+  margin-top:-42px;
+  margin-left:30px;
+}
+
+.hidden {
+  display: hidden;
+}
+
+.visuallyhidden {
+  opacity: 0;
+}
+
+/*Anpassung der Buttons*/
+button {
+  border: none;
+  background-color: #fff; /*Hintergrundfarbe an den Canvas-Background angepasst*/
+}
+
+.colourB {
+  font-size:16px;
+  cursor: pointer;
+  color: black;
+  border: none;
+  margin-left:5px;
+  margin-top:200px;
+}
+
+.deleteB {
+  font-size:16px;
+  cursor: pointer;
+  color: black;
+  border: none;
+  display:block;
+  margin-left:503px;
+  margin-top:-50px;
+}
+
+/*Buttons für die Farbauswahl*/
+.cViolet {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#9C27B0;
+}
+
+.cIndigo {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top:20px;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#4B0082;
+}
+
+.clPink {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top:20px;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#FFC0CB;
+}
+
+.cdPink {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top:20px;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#EE82EE;
+}
+
+.cLBlue {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#03A9F4 ;
+}
+
+.cDBlue {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#0D47A1 ;
+}
+
+.cRed {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#B71C1C;
+}
+
+.cGreen {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#4CAF50;
+}
+
+.cLime {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#CDDC39;
+}
+
+.cYellow {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#FFEB3B;
+}
+
+.cOrange {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#FF9800;
+}
+
+.cBrown {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#795548;
+}
+
+.cTan {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#D2B48C;
+}
+
+.cGold {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#DAA520;
+}
+
+.cLGrey {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#D3D3D3;
+}
+
+.cDGrey {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#808080 ;
+}
+
+.cBlack {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:#000000;
+}
+
+.eraser {
+  height: 18px;
+  width: 18px;
+  background-color: #bbb;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: inline-block;
+  margin-bottom:5px;
+  margin-left:5px;
+  background:white;
+}
+
+/*Buttons für die Pinselgröße*/
+.size1 {
+  height: 8px;
+  width: 8px;
+  background-color: #bbb;
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  background:#000;
+  margin-top:7px;
+  margin-left:7px;
+}
+
+.size2 {
+  height: 12px;
+  width: 12px;
+  background-color: #bbb;
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  background:#000;
+  margin-left:5px;
+  margin-top:5px;
+}
+
+.size5 {
+  height: 16px;
+  width: 16px;
+  background-color: #bbb;
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  background:#000;
+  margin-left:3px;
+  margin-top:4px;
+}
+
+.size10 {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  background:#000;
+  margin-left:1px;
+  margin-top: 5px;
+}
+
+.size25 {
+  height: 22px;
+  width: 22px;
+  background-color: #bbb;
+  border: 1px solid #bbb;
+  border-radius: 25%;
+  display: inline-block;
+  background:#000;
+}
