@@ -1,3 +1,4 @@
+# Folgende Files müssen nicht hochgeladen werden.
 node_modules/
 .angular/cache/
 .idea
