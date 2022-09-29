@@ -1,1 +1,4 @@
-/* Add application styles & imports to this file! */
+/*Für bessere Sichtbarkeit der Anwendung*/
+body {
+    background-color: #E3E3E3;
+}
