@@ -4,8 +4,7 @@
  *
  * This file is divided into 2 sections:
  *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
- *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
- *      file.
+ *   2. Application imports. Files imported after ZoneJS that should be loaded before your main file.
  *
  * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
  * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
@@ -39,11 +38,9 @@
 /** IE10 and IE11 requires the following to support `@angular/animation`. */
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
-
 /** Evergreen browsers require these. **/
 // import 'core-js/es6/reflect';
 // import 'core-js/es7/reflect';
-
 
 /**
  * Web Animations `@angular/platform-browser/animations`
