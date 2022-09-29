@@ -3,14 +3,14 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
-  HostListener,
   AfterViewInit
 } from "@angular/core";
-import {fromEvent, combineLatest} from "rxjs";
-import {filter, tap, concatMap, mergeMap, takeUntil} from "rxjs/operators";
+import {fromEvent} from "rxjs";
+import {tap, concatMap, takeUntil} from "rxjs/operators";
 import {CommunityMashupService} from "./communitymashup/communitymashup.service";
 import {Person} from "./communitymashup/model/person.model";
 
+//Enum-Type für die Bewegungsrichtung
 export enum Direction {
   up,
   left,
@@ -18,27 +18,28 @@ export enum Direction {
   right
 }
 
+//Festlegung der Distanz in eine Bewegungsrichtung
 export const DistanceConfig = {
   up: {
     x: 0,
-    y: 10
+    y: 5
   },
   left: {
-    x: -10,
+    x: -5,
     y: 0
   },
   down: {
     x: 0,
-    y: -10
+    y: -5
   },
   right: {
-    x: 10,
+    x: 5,
     y: 0
   }
 };
 
 @Component({
-  selector: "my-app",
+  selector: "drawing",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
@@ -47,25 +48,25 @@ export class AppComponent implements OnInit, AfterViewInit {
   cx;
   canvas = {width: 530, height: 350};
   currentLocation = {x: 200, y: 200};
-  preDirection: string;
+  locationList = [];
 
   penColor = 'black';
   penSize = 1;
 
-  locationList = [];
-
-  randProf: Person;
+  //Variable für einen zufällig generierten Professor
+  randomProf: Person;
+  showPic : boolean = false;
 
   @ViewChild("myCanvas", {static: false}) myCanvas: ElementRef;
 
-  constructor(public communitymashup: CommunityMashupService) {
-  }
+  constructor(public communitymashup: CommunityMashupService) {  }
 
   ngOnInit() {
     this.communitymashup.loadFromUrl();
   }
 
   ngAfterViewInit(): void {
+    //Wichtigste Variablen für das Malen auf dem Canvas:
     const canvasEl: HTMLCanvasElement = this.myCanvas.nativeElement;
     this.cx = canvasEl.getContext("2d");
 
@@ -83,40 +84,23 @@ export class AppComponent implements OnInit, AfterViewInit {
       }),
       concatMap(() => mouseMove$.pipe(takeUntil(mouseUp$)))
     );
-
     mouseDraw$.subscribe((e: MouseEvent) => this.draw(e.offsetX, e.offsetY));
   }
 
+  //Funktion für das Zeichnen mit der Maus
   draw(offsetX, offsetY) {
-    //this.cx.beginPath();
     this.cx.lineTo(offsetX, offsetY);
     this.cx.strokeStyle = this.penColor;
     this.cx.lineWidth = this.penSize;
     this.cx.stroke();
-    //this.cx.closePath();
   }
 
-//TODO Does not work yet
-//Größenänderung des Pinsels (y)
+  //Anpassung der Pinselgröße als Size
   size(obj) {
     this.penSize = obj;
-    //switch (obj.id) {
-    //case "s1":
-    //this.penSize = 1;
-    //break;
-    //case "s2":
-    //this.penSize = 2;
-    //break;
-    //case "s5":
-    //this.penSize = 5;
-    //break;
-    //case "s8":
-    //this.penSize = 8;
-    //break;
-    //}
   }
 
-//Farbänderung des Pinsels (x)
+  //Anpassung der Zeichenfarbe als Color
   color(obj) {
     if (obj == 1) {
       this.penColor = "#9C27B0";
@@ -169,8 +153,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (obj == 17) {
       this.penColor = "#EE82EE";
     }
-
-
+    //Falls "weiß" ausgewählt wird, muss zusätzlich die Pinselgröße angepasst werden
     if (obj == 0) {
       this.penColor = "white";
     }
@@ -178,25 +161,28 @@ export class AppComponent implements OnInit, AfterViewInit {
     //else this.penSize = 2;
   }
 
+  //Funktion zum Löschen des Canvas
   delete() {
-    var m = confirm("Willst du dein Bild wirklich löschen?");
+    let m = confirm("Möchtest du dein bisher Gemaltes wirklich löschen?");
     if (m) {
       this.cx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      //An dieser Stelle muss ein neuer Path begonnen werden!
       this.cx.beginPath();
     }
   }
 
-  //Bereitstellung des Canvas als Image-Datei
+  //Bereitstellung des Canvas als Image-URL
   save() {
-    var canvasImg: HTMLCanvasElement = this.myCanvas.nativeElement;
-    var dataURL = canvasImg.toDataURL('image/jpeg');
+    let canvasImg: HTMLCanvasElement = this.myCanvas.nativeElement;
+    let dataURL = canvasImg.toDataURL('image/jpeg');
+    //Kontrolle der Korrektheit der Funktion
     console.log(dataURL);
   }
 
-
-  showColors() {
+  //Ausblenden der Color-Bar mit Transition-Effekt
+  toggleColors() {
     let col = document.getElementById('colours');
-
+    //Unterscheidung nach aktuellem Stand der Color-Bar
     if (col.classList.contains('hidden')) {
       col.classList.remove('hidden');
       setTimeout(function () {
@@ -214,13 +200,20 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
+  //Zufallsgenerator für einen beliebigen Professor der Datenbank
   setRandProf(): void {
     const persons = this.communitymashup.getPersons('Prof');
     do {
-      this.randProf = persons[Math.floor(Math.random() * (persons.length - 1))];
-    } while (this.randProf.getImages().length === 0);
-    console.log("rando is now " + this.randProf.name);
+      this.randomProf = persons[Math.floor(Math.random() * (persons.length - 1))];
+    } while (this.randomProf.getImages().length === 0);
+    //Zurücksetzen der Bildanzeige
+    this.showPic = false;
+    //Kontrolle der Korrektheit der Funktion
+    console.log("Der zufällige Professor ist momentan " + this.randomProf.name);
   }
 
+  //Toggelt die Anzeige des Bildes auf "true" und damit sichtbar
+  togglePic() {
+    this.showPic = true;
+  }
 }
-

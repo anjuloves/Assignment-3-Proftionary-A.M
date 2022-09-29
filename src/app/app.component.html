@@ -1,23 +1,29 @@
+<!-- Einbindung der genutzten Fonts
+	 Ich bin skeptisch, ob die Fonts auch auf anderen Browsern korrekt angezeigt werden. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rock+Salt&display=swap" rel="stylesheet">
 
-<div class="game">
-	<div class="letsplay">Let's Play</div>
-	<div class="gameName">Proftionary</div>
+<!-- Container für den Namen des Spiels -->
+<div class="container-name">
+	<div class="small-font">Let's Play</div>
+	<div class="big-font">Proftionary</div>
 </div>
 
-<div class="con-body">
-
+<!-- Container für das Canvas und die dazugehörigen Buttons sowie Leisten. -->
+<div class="container-canvas">
+	<!-- Hintergrund des Canvas -->
 	<div class="background">
 		<canvas #myCanvas width="530" height="350" style="margin-top:12px; border:1px solid #BFBFBF;">
 		Your browser does not support the canvas element.
 		</canvas>
 	</div>
 
-	<button class ="deleteB" (click)="delete()">&#9746;</button>
+	<!-- Der Delete-Button um das Canvas zu clearen. -->
+	<button class ="deleteButton" (click)="delete()">&#9746;</button>
 
-	<div id="sizes" class="sizes">
+	<!-- Die Bar für die Pinselgrößen in der rechten, oberen Ecke. -->
+	<div id="sizes" class="sizeBar">
 		<div class="size25" id="s25" (click)="size(25)"></div>
 		<div class="size10" id="s10" (click)="size(10)"></div>
 		<div class="size5" id="s5" (click)="size(5)"></div>
@@ -25,11 +31,13 @@
 		<div class="size1" id="s1" (click)="size(1)"></div>
 	</div>
 
-	<!--SidebarColor-->
-	<button class="colourB" (click)="showColors()">&#8678;</button>
-	<div id="colours" class="colours">
-		<div class="clPink" id="lightpink" (click)="color(16)"></div>
-		<div class="cdPink" id="darkpink" (click)="color(17)"></div>
+	<!-- Der Toggle-Button für die Color-Bar -->
+	<button class="toggleColorButton" (click)="toggleColors()">&#8678;</button>
+	<!-- Die Bar für die Zeichenfarbe in der linken, unteren Ecke. -->
+	<div id="colours" class="colorBar">
+		<!-- Einbindung der möglichen Farben -->
+		<div class="cLPink" id="lightpink" (click)="color(16)"></div>
+		<div class="cDPink" id="darkpink" (click)="color(17)"></div>
 		<div class="cViolet" id="violet" (click)="color(1)"></div>
 		<div class="cIndigo" id="indigo" (click)="color(15)"></div>
 		<div class="cDBlue" id="darkBlue" (click)="color(2)"></div>
@@ -45,14 +53,25 @@
 		<div class="cLGrey" id="lightGrey" (click)="color(10)"></div>
 		<div class="cDGrey" id="darkGrey" (click)="color(11)"></div>
 		<div class="cBlack" id="black" (click)="color(12)"></div>
-
+		<!-- Einbindung des Radierers -->
 		<div class="eraser" id="white" (click)="color(0)"></div>
 	</div>
-
 </div>
-<br>
-<button (click)="setRandProf()">generate Prof</button>
-<span *ngIf="randProf">
-  <p>{{randProf.name}}</p>
-  <img src="{{randProf.getImages()[0].fileUrl}}"/>
-</span>
+
+<!-- Container für das Generieren eines Professor -->
+<div class="container-gen">
+	<!-- Button um zufällig den Namen eines Professor zu generieren. -->
+	<button class="generateProfButton" (click)="setRandProf()">Generate a Prof:</button>
+	<!-- Die Daten zum Professor werden erst angezeigt, sobald der Button gedrückt wurde. -->
+	<span *ngIf="randomProf" style="font-family: Helvetica, Arial, serif; font-size: 14px; letter-spacing: 2px;">
+  		{{randomProf.name}}
+		<br>
+		<!-- Button zur Anzeige des Bildes ~ Lösung -->
+		<button class="showPicButton" (click)="togglePic()">Zeig mir die Lösung an!</button>
+		<br>
+		<!-- Das Bild wird nur angezeigt, wenn der Lösungsbutton gedrückt wurde. -->
+		<div *ngIf="showPic" id="showPic" style="margin-left:-197px; margin-top:10px;">
+			<img alt="" src="{{randomProf.getImages()[0].fileUrl}}" style="max-width:530px;"/>
+		</div>
+	</span>
+</div>
