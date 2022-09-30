@@ -5,7 +5,7 @@ Für den Zugriff auf die Mashup-Daten wurde die bereitgestellte Typescript-Libra
 Herausgefiltert und genutzt werden in der Anwendung die Namen der Professoren sowie die dazu hinterlegten Bilder.
 
 Die Anwendung "Proftionary" basiert auf dem Spiel "Pictionary". 
-Das das Drücken des entsprechenden Button wird der Name eines Professor der Fakultät generiert. 
+Das Drücken des entsprechenden Button wird der Name eines Professor der Fakultät generiert. 
 Man kann daraufhin die bereitgestellten Pinselfarben, sowie -größen nutzen um ein entsprechendes Bild dazu zu Malen. 
 Die Farbleiste kann ein- und ausgeblendet werden.
 Durch das Drücken des X-Buttons, sowie einer darauf folgenden Bestätigung lässt sich das Bild löschen und die Zeichenfläche clearen.
